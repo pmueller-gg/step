@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
   <body>
+    <div id = "navBar">
+      <!-- Used to include the same navbar on each page.-->
+      <script>
+        $(function(){
+          $("#navBar").load("navbar.html");
+        });
+      </script>
+    </div>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
+      <h1>Andru Stefanescu's Portfolio</h1>
+      <p>This is my portfolio. My name is Andru Stefanescu, I am 20 years old and I am interested
+        in programmming. Here's a photo with me and one of my dogs:
+      </p>
+      <br>
+      <img class = "dog" src='images/meanddog.jpg' alt = "Photo of me and my dog.">
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
