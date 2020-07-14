@@ -13,9 +13,43 @@
   color: #ffffff;
 }
 
+.video-container{
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: auto;
+}
+
+.video{
+  position: absolute;
+  z-index: 0;
+  min-width: 100%;
+  min-height: 100%;
+  bottom: 0;
+  right: 0;
+}
+
+nav{
+  z-index: 100;
+}
+
+.overlay{
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  max-width: 50%;
+  align-self: flex-start;
+  justify-content: center;
+  margin-top: 10%;
+}
+
 #greeting-container {
   margin-top: 20px;
 }
+
 
 .active{
   border-bottom: 2px green;

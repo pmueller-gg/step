@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Resume</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+  <div id = "navBar">
+    <!-- Used to include the same navbar on each page.-->
+    <script>
+      $(function(){
+        $("#navBar").load("navbar.html");
+      });
+    </script>
+  </div>
+  <body onkeypress="redirectFunction()">
+    <div class="video-container">
+      <video autoplay="" class="video" id="bgvid" muted loop src="resources/bkvideo.mov"></video>
+      <div class="overlay">
+        <a class="btn btn-info" href="resources/resume.pdf" role="button">Click here or press any key to view the resume</a>
+      </div>
+    </div>
+  </body>
+  </body>
+</html>
