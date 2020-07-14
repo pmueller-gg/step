@@ -26,3 +26,17 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+function navbar_set_active_item(){
+  var current_webpage = location.pathname.substring(1); //Don't count the leading /
+  if (current_webpage.length < 1) //Don't need to set an active item if on index
+    return ;
+  if (current_webpage[0] == 'a')
+    document.getElementById("about").classList.add("active");
+  else if(current_webpage[0] == 'r')
+    document.getElementById("resume").classList.add("active");
+  else if (current_webpage[0] == 's')
+    document.getElementById("social").classList.add("active");
+  else if (current_webpage[0] == 't')
+    document.getElementById("series").classList.add("active");
+}
