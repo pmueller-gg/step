@@ -40,3 +40,7 @@ function navbar_set_active_item(){
   else if (current_webpage[0] == 't')
     document.getElementById("series").classList.add("active");
 }
+
+function redirectToPath(pathName){
+  window.location.pathname=pathName;
+}
