@@ -41,6 +41,6 @@ function navbar_set_active_item(){
     document.getElementById("series").classList.add("active");
 }
 
-function redirectFunction(){
-  window.location.pathname='/resources/resume.pdf';
+function redirectToPath(pathName){
+  window.location.pathname=pathName;
 }
