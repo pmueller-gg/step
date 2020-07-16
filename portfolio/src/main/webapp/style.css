@@ -54,6 +54,21 @@ nav{
   border-bottom: 2px green;
 }
 
+.section-border{
+  border: 1px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  flex-direction: column;
+}
+
+.social-button{
+  margin: 10px;
+  font-size: 25px;
+  background: none;
+  border-radius: 5px;
+}
+
 img.dog{
   width: 50%;
   height: 50%;

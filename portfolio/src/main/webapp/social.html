@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Social Media</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script src="https://use.fontawesome.com/882c74b8a2.js"></script>
+</head>
+<div id="navBar">
+  <!-- Used to include the same navbar on each page.-->
+  <script>
+    $(function () {
+      $("#navBar").load("navbar.html");
+    });
+  </script>
+</div>
+
+<body>
+  <div class="video-container">
+    <video autoplay="" class="video" id="bgvid" muted loop src="resources/bkvideo.mov"></video>
+    <div class="overlay section-border">
+      <button onclick="redirectToPath('https://instagram.com/andru47')" class="social-button">
+        <i class="fa fa-instagram"></i>
+        Instagram
+      </button>
+      <button onclick="redirectToPath('https://facebook.com/StefanescuAndru')" class="social-button">
+        <i class="fa fa-facebook-square"></i>
+        Facebook
+      </button>
+      <button onclick="redirectToPath('https://github.com/andru47/')" class="social-button">
+        <img src="resources/git.png" class="icon" style="float: left; margin-top: 3px;" alt="Github icon">
+        Github
+      </button>
+      <button onclick="redirectToPath('https://linkedin.com/in/andru-lucian-stefanescu-163820192/')"
+        class="social-button">
+        <img src="resources/ldin.png" class="icon" style="margin-left: -10px; margin-top: -2px;" alt="LinkedIn icon">
+        LinkedIn
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

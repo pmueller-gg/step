@@ -41,6 +41,6 @@ function navbar_set_active_item(){
     document.getElementById("series").classList.add("active");
 }
 
-function redirectToPath(pathName){
-  window.location.pathname=pathName;
+function redirectToPath(givenPath){
+  window.open(givenPath, "_blank");
 }
