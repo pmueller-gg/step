@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About me</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div id="navBar">
+    <!-- Used to include the same navbar on each page.-->
+    <script>
+      $(function () {
+        $("#navBar").load("navbar.html");
+      });
+    </script>
+  </div>
+  <div class="video-container">
+    <video autoplay="" playsinline class="video" id="bgvid" muted loop src="resources/bkvideo.mov"></video>
+    <div class="overlay about-me-container">
+      <div class="flex-elem-content container">
+        <div>
+          Hello! My name is Andru Stefanescu and I am 20 years old. I am from Romania, but I am studying at Cambridge in
+          the UK. My degree is BA in Computer Science and I'm expected to graduate in 2022. Apart from programming, I
+          really like playing and watching football.
+        </div>
+        <div>
+          <button class="btn btn-info" onclick="showImage()" style="margin-top: 3vh; margin-bottom: 3vh;">Get random
+            photo of my pets</button>
+        </div>
+        <div id="image-container"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
