@@ -46,6 +46,8 @@ function redirectToPath(givenPath){
 }
 
 function getRandomIntegerWithinInterval(left, right){
+  if (left > right)
+    [left, right] = [right, left];
   return Math.floor(Math.random() * (right - left + 1) ) + left;
 }
 
