@@ -44,3 +44,22 @@ function navbar_set_active_item(){
 function redirectToPath(givenPath){
   window.open(givenPath, "_blank");
 }
+
+function getRandomIntegerWithinInterval(left, right){
+  if (left > right)
+    [left, right] = [right, left];
+  return Math.floor(Math.random() * (right - left + 1) ) + left;
+}
+
+function showImage(){
+  var image = new Image();
+  image.src ='resources/pets';
+  image.style.maxHeight = "40vh";
+  image.style.maxWidth = "auto";
+ 
+  var randomNumber = getRandomIntegerWithinInterval(1, 6);
+  image.src += randomNumber + '.JPG';
+
+  document.getElementById("image-container").innerHTML = ''; // Remove image if existing
+  document.getElementById("image-container").appendChild(image);
+}

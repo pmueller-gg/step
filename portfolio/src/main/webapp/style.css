@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Walter+Turncoat');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 #content {
   margin-left: auto;
@@ -23,13 +25,47 @@
   margin-top: auto;
 }
 
+.flex-elem-content{
+  display: flex;
+  overflow: scroll;
+  text-align: center;
+  flex-direction: column;
+}
+
+.about-me-container{
+  background: rgba(255, 255, 255, 0.7);
+  border: 3px;
+  border-color: white;
+  border-radius: 3px;
+  display: flex;
+  align-content: center;
+  width: 50vw;
+  height: 60vh;
+  overflow: scroll;
+}
+
 .video{
-  position: absolute;
+  position: fixed;
   z-index: 0;
   min-width: 100%;
   min-height: 100%;
   bottom: 0;
   right: 0;
+}
+
+.index-text{
+  text-transform: uppercase;
+  font-family: "Walter Turncoat";
+  font-size: 6vw;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+}
+
+.index-text > p{
+  font-family: "Dancing Script", cursive;
+  font-size: 3vw;
+  text-transform: lowercase;
+  line-height: 0px;
 }
 
 nav{
@@ -40,7 +76,6 @@ nav{
   position: absolute;
   z-index: 100;
   display: flex;
-  max-width: 50%;
   align-self: flex-start;
   justify-content: center;
   margin-top: 10%;
