@@ -15,6 +15,45 @@
   color: #ffffff;
 }
 
+.comment-section{
+  height: 50vh;
+  width: 50vw;
+  border: 1px;
+  border-radius: 5px;
+  border-color: black;
+  position: relative;
+  top: 0%;
+  left: 25%;
+  flex-direction: column;
+  overflow: scroll;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+input{
+  left: 25%;
+  width: 50vw;
+  height: 5vh;
+  position: relative;
+  overflow: scroll;
+  min-height: 30px;
+}
+
+.comment{
+  border: 1px;
+  border-color: black;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.comment-info{
+  order: 1;
+  color: black;
+}
+
+.comment p{
+  order: 2;
+}
+
 .video-container{
   overflow: hidden;
   height: 100%;

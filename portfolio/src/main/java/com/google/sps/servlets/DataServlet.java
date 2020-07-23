@@ -14,19 +14,53 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.classes.Comment;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.gson.Gson;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
+/**
+ * Servlet that returns some example content.
+ * comments data
+ */
+@WebServlet("/comments")
 public class DataServlet extends HttpServlet {
+  private List<Comment> arr = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+    Query q = new Query("Comment").addSort("timestamp");
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+    PreparedQuery results = datastore.prepare(q);
+    List<Comment> arr = new ArrayList<>();
+
+    for (Entity it : results.asIterable()) {
+      String message = (String) it.getProperty("message");
+      String name = (String) it.getProperty("name");
+      long timestamp = (long) it.getProperty("timestamp");
+      long id = (long) it.getKey().getId();
+      
+      arr.add(new Comment(message, name, timestamp, id));
+    }
+    Gson gson = new Gson();
+    response.setContentType("application/json;");
+
+    response.getWriter().println(gson.toJson(arr));
   }
 }
