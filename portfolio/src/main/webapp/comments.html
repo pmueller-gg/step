@@ -11,6 +11,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <script src="script.js"></script>
 </head>
 
@@ -23,13 +25,28 @@
       });
     </script>
   </div>
+  <div style="position: relative; left: 25%; width: 50vw;">
+    <label for="number_comments">How many comments to be displayed:</label>
+
+    <select id="number_comments" onchange="FetchComments()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="-1" selected>All</option>
+    </select>
+  </div>
   <ul class="comment-section">
   </ul>
   <form action="/new-comment" method="POST">
     <input type="text" placeholder="Enter your name" name="name" required>
     <input type="text" placeholder="Enter your comment" name="message" required>
+    <div class="g-recaptcha" data-sitekey="6LfSp7QZAAAAAKzxVJHz3Yf8ULELyMgE24r96BxF" style="left: 25%; position: relative;"></div>
+    <br />
     <input type="submit" />
   </form>
+  <div style="position: relative; left: 25%; width: 50vw;">
+    <button class="btn btn-danger" onclick="DeleteComments()">Click here to delete all comments.</button>
+  </div>
 </body>
 
 </html>
