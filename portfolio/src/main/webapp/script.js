@@ -65,7 +65,9 @@ function showImage() {
 }
 
 function FetchComments() {
-  fetch('/comments').then(response => response.json()).then(messages => {
+  var nr = document.getElementById("number_comments").value;
+  document.getElementsByClassName("comment-section")[0].innerHTML = '';
+  fetch('/comments?how_many=' + nr).then(response => response.json()).then(messages => {
     messages.forEach(message => {
       makeElement(message.nickname, message.comment);
     })
@@ -87,4 +89,8 @@ function makeElement(nickname, message) {
   newComment.appendChild(newP);
 
   document.getElementsByClassName("comment-section")[0].appendChild(newComment);
+}
+
+function DeleteComments(){
+  fetch("/delete-comment", {method: 'POST'}).then(response => FetchComments());
 }
