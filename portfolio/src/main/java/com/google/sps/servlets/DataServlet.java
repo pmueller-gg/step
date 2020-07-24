@@ -59,8 +59,8 @@ public class DataServlet extends HttpServlet {
       arr.add(new Comment(message, name, timestamp, id));
       --how_many;
     
-      if (how_many == 0)
-        break;
+      if (how_many == 0) // If how_many goes below 0, all the comments will be loaded in the list and displayed
+        break;           // on the html page. So, setting a value <=0 in the POST request will display all the comments
     }
     Gson gson = new Gson();
     response.setContentType("application/json;");
