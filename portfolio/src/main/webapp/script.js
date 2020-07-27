@@ -71,7 +71,7 @@ function FetchComments() {
     messages.forEach(message => {
       makeElement(message.nickname, message.comment);
     })
-  });
+  }).then(LoginSelector());
 }
 
 function makeElement(nickname, message) {
@@ -91,6 +91,76 @@ function makeElement(nickname, message) {
   document.getElementsByClassName("comment-section")[0].appendChild(newComment);
 }
 
-function DeleteComments(){
-  fetch("/delete-comment", {method: 'POST'}).then(response => FetchComments());
+function DeleteComments() {
+  fetch("/delete-comment", { method: 'POST' }).then(response => FetchComments());
+}
+
+function LoginSelector() {
+  fetch('/login').then(response => response.json()).then(handler => {
+    if (handler.logged) {
+      document.getElementById("hide-id").style.display = "";
+
+      var LogoutButton = document.createElement("button");
+      LogoutButton.innerText = "Logout";
+      LogoutButton.classList.add("btn");
+      LogoutButton.classList.add("btn-danger");
+      LogoutButton.onclick = function () { window.open(handler.link, "_self"); };
+
+      document.getElementById("comments-link").innerHTML = "";
+      document.getElementById("comments-link").appendChild(LogoutButton);
+      return true;
+    }
+    else {
+      document.getElementById("hide-id").style.display = "none";
+
+      var LoginButton = document.createElement("button");
+      LoginButton.innerText = "Login to see the contents";
+      LoginButton.classList.add("btn");
+      LoginButton.classList.add("btn-success");
+      LoginButton.onclick = function () { window.open(handler.link, "_self"); };
+
+      document.getElementById("comments-link").innerHTML = "";
+      document.getElementById("comments-link").appendChild(LoginButton);
+      return false;
+    }
+  }).then(loggedin => {
+    if (loggedin)
+      NicknameFetcher();
+  });
+}
+
+function NicknameFetcher() {
+  fetch("/set-nickname").then(response => response.json()).then(user => {
+    var nickname = user.nickname;
+    var email = user.email;
+    var id = user.id;
+    if (nickname.length < 1) {
+      document.getElementById("nickname-container").style.display = "";
+    }
+    else {
+      document.getElementById("hide-unlogged").style.display = "";
+      document.getElementById("nickname-display").style.display = "";
+
+      var elem = document.createElement("p");
+      elem.innerText = "Your nickname is currently: " + nickname;
+
+      var anchor = document.createElement("a");
+      anchor.setAttribute("href", "#");
+      anchor.setAttribute("onclick", "showElementByID('nickname-container'); hideElementByID('hide-unlogged')");
+      anchor.innerHTML = "here";
+
+      document.getElementById("nickname-display").innerHTML = "If you want to change your nickname click ";
+      document.getElementById("nickname-display").appendChild(anchor);
+      document.getElementById("nickname-display").appendChild(elem);
+    }
+
+  })
+}
+
+function showElementByID(ID) {
+  document.getElementById(ID).style.display = "";
+}
+
+function hideElementByID(ID) {
+  document.getElementById(ID).style.display = "none";
 }
