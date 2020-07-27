@@ -34,9 +34,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet that returns some example content.
- */
 @WebServlet("/comments")
 public class DataServlet extends HttpServlet {
   private List<Comment> arr = new ArrayList<>();
@@ -52,15 +49,20 @@ public class DataServlet extends HttpServlet {
 
     for (Entity it : results.asIterable()) {
       String message = (String) it.getProperty("message");
-      String name = (String) it.getProperty("name");
+      String UID = (String) it.getProperty("id");
       long timestamp = (long) it.getProperty("timestamp");
       long id = (long) it.getKey().getId();
 
+      Query q_nickname = new Query("Users").setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, UID));
+      PreparedQuery result = datastore.prepare(q_nickname); // Get the nickname of the user who wrote the current comment
+      Entity givenEntity = result.asSingleEntity();
+
+      String name = (String) givenEntity.getProperty("nickname");
       arr.add(new Comment(message, name, timestamp, id));
       --how_many;
-    
-      if (how_many == 0)
-        break;
+
+      if (how_many == 0) // If how_many goes below 0, all the comments will be loaded in the list and displayed
+        break;           // on the html page. So, setting a value <=0 in the POST request will display all the comments
     }
     Gson gson = new Gson();
     response.setContentType("application/json;");
